@@ -33,3 +33,16 @@ persp (x,y,fa ,theta =30, phi =70)
 persp (x,y,fa ,theta =30, phi =40)
 ```
 
+# 2.3.4 Loading Data
+
+```{r}
+library(ISLR)
+# 打开内置包里面的数据
+data(Auto)
+fix(Auto) # 竟然可以直接在spreadsheet里面修改数据。。
+```
+
+```{r}
+# Auto1=read.table("Auto.data", header=T,na.strings="?") 无法运行 auto不在本地
+```
+
