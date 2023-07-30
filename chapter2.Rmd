@@ -46,3 +46,48 @@ fix(Auto) # 竟然可以直接在spreadsheet里面修改数据。。
 # Auto1=read.table("Auto.data", header=T,na.strings="?") 无法运行 auto不在本地
 ```
 
+# 2.3.5 Additional Graphical and Numerical Summaries
+
+```{r}
+plot(Auto$cylinders,Auto$mpg)
+attach (Auto)
+plot(cylinders,mpg)
+```
+
+```{r}
+cylinders =as.factor(cylinders)
+```
+
+```{r}
+plot(cylinders,mpg)
+plot(cylinders,mpg,col="red") 
+plot(cylinders,mpg,col="blue",varwidth=T) 
+# 是一个逻辑值。设置为true以绘制与样本大小成比例的框的宽度
+plot(cylinders,mpg,col="red",varwidth=T,horizontal=T)
+plot(cylinders, mpg, col = "red", varwidth = T, xlab = "cylinders", ylab = "MPG")
+```
+
+```{r}
+hist(mpg)
+hist(mpg, col = 2)
+hist(mpg ,col = 2, breaks = 15) # breaks等于一个数是建议的分组组数，但R不一定会用
+
+break1<-seq(0,100,10) #设置分组
+hist(mpg,breaks=break1) # 这样就是一定按照分组画的图
+```
+
+```{r}
+pairs(Auto)
+pairs(~ mpg + displacement + horsepower + weight + acceleration, Auto)
+```
+
+```{r}
+plot(horsepower, mpg)
+identify(horsepower, mpg, name)
+```
+
+```{r}
+savehistory() 
+loadhistory()
+```
+
