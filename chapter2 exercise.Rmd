@@ -1,0 +1,61 @@
+---
+title: "Chapter2 Exercise"
+author: "Yiwen Liu"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ISLR)
+library(readr)
+```
+
+# 8
+```{r}
+# a
+data(College)
+
+# b
+# fix(College)
+# rownames(College) = College[,1]
+
+# c
+# i.
+summary(College)
+
+# ii.
+pairs(College[,1:10])
+
+# iii.
+plot(College$Private, College$Outstate)
+
+# iv.
+Elite = rep("No", nrow(College))
+Elite[College$Top10perc>50] = "Yes"
+Elite = as.factor(Elite)
+College = data.frame(College, Elite)
+summary(College$Elite)
+plot(College$Elite, College$Outstate)
+
+# v.
+par(mfrow=c(2,2))
+hist(College$Apps)
+hist(College$perc.alumni, col=2)
+hist(College$S.F.Ratio, col=3, breaks=10)
+hist(College$Expend, breaks=100)
+
+# vi.
+par(mfrow=c(1,1))
+plot(College$Outstate, College$Grad.Rate)
+# High tuition correlates to high graduation rate.
+plot(College$Accept / College$Apps, College$S.F.Ratio)
+# Colleges with low acceptance rate tend to have low S:F ratio.
+plot(College$Top10perc, College$Grad.Rate)
+# Colleges with the most students from top 10% perc don't necessarily have
+# the highest graduation rate. Also, rate > 100 is erroneous!
+```
+
